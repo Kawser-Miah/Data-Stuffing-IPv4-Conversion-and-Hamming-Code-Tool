@@ -1,0 +1,18 @@
+.bitstuf{
+    display: none;
+}
+
+ #Bit, .input-section{
+    font-size: 1.4rem !important;
+}
+
+#Output{
+margin-top: 1.2rem;
+font-size: 1.7rem;
+color: rgb(3, 82, 82);
+}
+
+.font{
+    font-size: 1.5rem;
+}
+
