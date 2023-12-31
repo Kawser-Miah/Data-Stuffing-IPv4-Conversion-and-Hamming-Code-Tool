@@ -6,7 +6,8 @@
   font-family: "Roboto Condensed", sans-serif;
   box-sizing: border-box;
 }
-
+body {
+     background: linear-gradient(90deg, #2a8897c4, #6a2b66e8) !important;        }
 .header {
   padding: 1.4rem;
   text-align: center;
