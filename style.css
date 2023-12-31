@@ -6,8 +6,7 @@
   font-family: "Roboto Condensed", sans-serif;
   box-sizing: border-box;
 }
-body {
-     background: linear-gradient(90deg, #2a8897c4, #6a2b66e8) !important;        }
+
 .header {
   padding: 1.4rem;
   text-align: center;
@@ -164,5 +163,72 @@ input:active {
   .stuffing{
     margin: 10vh 0;
     padding: 2rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* animated styles */
+:root {
+  --clr-1: #c4db18;
+  --clr-2: #329520;
+  --clr-3: #152168;
+  --clr-4: #7395cc;
+  --clr-5: #370b3d;
+}
+
+body {
+  background: linear-gradient(90deg,
+          #2a8897c4,
+          #6a2b66e8) !important;
+
+
+}
+
+.container {
+  position: relative;
+  
+}
+
+.container::before,
+.container::after {
+  content: "";
+  position: absolute;
+  inset: -.5rem;
+  border-radius: inherit;
+  z-index: -1;
+  animation: rotation 4.4s linear infinite;
+  background: conic-gradient(from var(--gradient-angle),
+          var(--clr-3),
+          var(--clr-4),
+          var(--clr-5),
+          var(--clr-4),
+          var(--clr-3));
+}
+
+.container::after {
+  filter: blur(1.5rem);
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% {
+      --gradient-angle: 0deg;
+  }
+
+  100% {
+      --gradient-angle: 360deg;
   }
 }
