@@ -29,7 +29,7 @@ let D2B = document.getElementById("D2B");
 
 
         
-        if (/^(\d{8}\.){4}\d{8}$/.test(IpInput)) {
+        if (/^(\d{8}\.){3}\d{8}$/.test(IpInput)) {
             // Split the binary address into an array of octets
             let octets = IpInput.split('.');
 
