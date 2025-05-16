@@ -7,17 +7,22 @@ let D2B = document.getElementById("D2B");
             
             let octets = IpInput.split('.');
 
-            
-            let binaryOctets = octets.map(octet => {
-                let binary = parseInt(octet, 10).toString(2);
-                return '0'.repeat(8 - binary.length) + binary; // Ensure each binary representation has 8 bits
-            });
+            if (octets.every(octet => parseInt(octet) >= 0 && parseInt(octet) <= 255)) {
 
-            // Join the binary octets with dots to form the binary address
-            let binaryAddress = binaryOctets.join('.');
+                 let binaryOctets = octets.map(octet => {
+                                 let binary = parseInt(octet, 10).toString(2);
+                                 return '0'.repeat(8 - binary.length) + binary; // Ensure each binary representation has 8 bits
+                             });
 
-            // Display the result
-            document.getElementById("IpOutput").textContent = binaryAddress;
+                             // Join the binary octets with dots to form the binary address
+                             let binaryAddress = binaryOctets.join('.');
+
+                             // Display the result
+                             document.getElementById("IpOutput").textContent = binaryAddress;
+                } else {
+                    document.getElementById("IpOutput").textContent = "Invalid IPv4 Octet Range (0-255)";
+                }
+
         } else {
             // Display an error message for invalid input
             document.getElementById("IpOutput").textContent = "Invalid IPv4 Decimal Address";
