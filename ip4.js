@@ -34,20 +34,24 @@ let D2B = document.getElementById("D2B");
 
 
         
-        if (/^(\d{8}\.){3}\d{8}$/.test(IpInput)) {
-            // Split the binary address into an array of octets
-            let octets = IpInput.split('.');
+        if (/^([01]{8}\.){3}[01]{8}$/.test(IpInput)) {
+            try {
+                let octets = IpInput.split('.');
 
-            // Convert each octet to decimal
-            let decimalOctets = octets.map(octet => parseInt(octet, 2));
+                let decimalOctets = octets.map(octet => {
+                    if (!/^[01]{8}$/.test(octet)) {
+                        throw new Error(`Invalid binary octet: ${octet}`);
+                    }
+                    return parseInt(octet, 2);
+                });
 
-            // Join the decimal octets with dots to form the decimal address
-            let decimalAddress = decimalOctets.join('.');
+                let decimalAddress = decimalOctets.join('.');
 
-            // Display the result
-            document.getElementById("IpOutput").textContent = decimalAddress;
+                document.getElementById("IpOutput").textContent = decimalAddress;
+            } catch (error) {
+                document.getElementById("IpOutput").textContent = error.message;
+            }
         } else {
-            // Display an error message for invalid input
             document.getElementById("IpOutput").textContent = "Invalid IPv4 Binary Address";
         }
     });
